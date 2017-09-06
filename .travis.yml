@@ -1,2 +1,6 @@
 language: java
+<<<<<<< HEAD
 script: ./gradlew clean build integrationTest
+=======
+script: clean build integrationTest
+>>>>>>> branch 'master' of https://github.com/fabapp/pricaoffers.git
