@@ -1,6 +1,5 @@
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -29,6 +28,3 @@ nbdist/
 /cart-service/
 /order-webapp/
 /docs/
-/pricaoffers/
-/database_init.sql
-/pricaoffers/
