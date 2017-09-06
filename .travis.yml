@@ -1,4 +1,4 @@
 language: java
 script: 
   - "./gradlew clean build"
-  - "./contact-service/gradlew integrationTest"
+  - "./contact-service/gradlew -d integrationTest"
