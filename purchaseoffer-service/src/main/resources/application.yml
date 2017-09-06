@@ -1,0 +1,36 @@
+spring:
+  application: 
+    name: purchaseoffer-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  kafka:
+    consumer:
+      group-id: service-template
+    bootstrap-servers: localhost:9092   
+server:
+  port: 8085
+logging:
+  level:
+    de.appblocks.microservice.purchaseoffer: DEBUG
+
+---
+spring:
+  profiles: container
+  debug: true
+  jpa:
+      database: MYSQL
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+          ddl-auto: create-drop  
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://purchaseoffer-db/purchaseoffer
+    username: ps
+    password: ps-pass
+  kafka:
+    bootstrap-servers: kafka:9092    
+banner:
+  location: banner.container.txt
+server:
+  port: 8085
+debug: true

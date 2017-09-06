@@ -1,0 +1,33 @@
+spring:
+  application: 
+    name: contact-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  kafka:
+    consumer:
+      group-id: service-template
+      value-deserializer: de.appblocks.microservice.contact.integration.ContactJsonDeserializer
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: localhost:9092
+server:
+  port: 8086
+---
+spring:
+  profiles: container
+  debug: true
+  jpa:
+      database: MYSQL
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+          ddl-auto: create-drop  
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://contact-db/contact
+    username: cs
+    password: cs-pass
+  kafka:
+    bootstrap-servers: kafka:9092 
+banner:
+  location: banner.container.txt
+debug: true  

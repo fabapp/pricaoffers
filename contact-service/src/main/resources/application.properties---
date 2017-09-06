@@ -1,0 +1,5 @@
+spring.kafka.consumer.group-id=service-template
+spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
+spring.kafka.consumer.value-deserializer=de.appblocks.microservice.contact.integration.ContactJsonDeserializer
+spring.kafka.bootstrap-servers=localhost:9092
+server.port=8086

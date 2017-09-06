@@ -23,9 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-/kafka_2.11-0.11.0.0/
-/kafka-example/
-/gradle/
-/cart-service/
-/order-webapp/
-/docs/
+*.log
+## Dockerfile can be generated with gradle
+Dockerfile
+/bin/
