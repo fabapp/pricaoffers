@@ -24,7 +24,6 @@ nbdist/
 .nb-gradle/
 /kafka_2.11-0.11.0.0/
 /kafka-example/
-/gradle/
 /cart-service/
 /order-webapp/
 /docs/

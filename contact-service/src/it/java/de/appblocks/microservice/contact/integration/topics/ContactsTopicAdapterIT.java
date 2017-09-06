@@ -35,14 +35,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.appblocks.microservice.contact.domain.Contact;
 import de.appblocks.microservice.contact.integration.ContactJsonDeserializer;
-import de.appblocks.microservice.contact.integration.ContactTopic;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ContactsTopicAdapterIT {
 
 	@ClassRule
-	public static KafkaEmbedded kafkaEmbedded = new KafkaEmbedded(2, false, ContactTopic.CONTACT_V1_CONTACT_NEW);
+	public static KafkaEmbedded kafkaEmbedded = new KafkaEmbedded(2, false, ContactTopicConfig.CONTACT_V1_CONTACT_NEW);
 
 	@Autowired
 	private ObjectMapper om;
@@ -83,13 +82,13 @@ public class ContactsTopicAdapterIT {
 		contact.setName("John Doe");
 		contact.setEmail("john.doe@mymail.com");
 		String contactJson = om.writeValueAsString(contact);
-		ResponseEntity<Contact> contactReturned = restTemplate.postForEntity("/contacts/", contact, Contact.class);
+		ResponseEntity<Contact> contactReturned = restTemplate.postForEntity("/v1/contacts/", contact, Contact.class);
 		latch.await();
 		assertThat(contactReceived).isEqualTo(contact);
 		assertThat(contactReceived).isEqualTo(contactReturned.getBody());
 	}
 
-	@KafkaListener(topics = ContactTopic.CONTACT_V1_CONTACT_NEW)
+	@KafkaListener(topics = ContactTopicConfig.CONTACT_V1_CONTACT_NEW)
 	public void sendTemplateInfoDataRequest(ConsumerRecord<Object, Contact> cr) throws Exception {
 		contactReceived = cr.value();
 		latch.countDown();

@@ -39,7 +39,7 @@ public class ContactControllerIT {
 		Mockito.when(contactService.getContact(id)).thenReturn(contact);
 		
 		String expectedContent = om.writeValueAsString(contact);
-		mockMvc.perform(get("/contacts/" + id).contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(content().string(expectedContent));
+		mockMvc.perform(get("/v1/contacts/" + id).contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(content().string(expectedContent));
 		
 		Mockito.verify(contactService).getContact(id);
 	}
