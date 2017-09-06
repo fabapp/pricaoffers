@@ -1,0 +1,6 @@
+===========================================================
+===	Service-Template                                    ===
+===                                                     ===
+===   SpringBoot: 	${spring-boot.formatted-version}	===
+===   ${application.title}    ${application.version}    ===
+===========================================================

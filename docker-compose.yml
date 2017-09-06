@@ -1,0 +1,64 @@
+version: '3'
+services:
+  purchaseoffer-service:
+    build:
+      context: ./purchaseoffer-service
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=container
+    links:
+      - purchaseoffer-db
+      - kafka
+    depends_on:
+      - purchaseoffer-db
+      - kafka
+    command: ["./wait-for-it.sh", "localhost:3306"]   
+    restart: always
+  purchaseoffer-db:
+    image: mysql:latest
+    container_name: purchaseoffer-db
+    environment:
+      - MYSQL_DATABASE=purchaseoffer
+      - MYSQL_USER=ps
+      - MYSQL_PASSWORD=ps-pass
+      - MYSQL_ROOT_HOST=localhost
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    expose: [3306]
+    
+  contact-service:
+    build:
+      context: ./contact-service
+    ports:
+      - "8086:8086"
+    environment:
+      - SPRING_PROFILES_ACTIVE=container
+    links:
+      - contact-db
+      - kafka
+    depends_on:
+      - contact-db
+      - kafka
+    command: ["./wait-for-it.sh", "localhost:3306"]   
+    restart: always
+  contact-db:
+    image: mysql:latest
+    container_name: contact-db
+    environment:
+      - MYSQL_DATABASE=contact
+      - MYSQL_USER=cs
+      - MYSQL_PASSWORD=cs-pass
+      - MYSQL_ROOT_HOST=localhost
+      - MYSQL_ROOT_PASSWORD=root
+
+  kafka:
+    container_name: kafka
+    image: spotify/kafka:latest
+    ports:
+      - 2181:2181
+      - 9092:9092
+    environment:
+      - ADVERTISED_HOST=192.168.2.107
+      - ADVERTISED_PORT=9092
