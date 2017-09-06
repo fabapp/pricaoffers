@@ -29,3 +29,6 @@ nbdist/
 /cart-service/
 /order-webapp/
 /docs/
+/pricaoffers/
+/database_init.sql
+/pricaoffers/
