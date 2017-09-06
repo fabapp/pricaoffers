@@ -9,11 +9,12 @@
 apply plugin: 'java'
 
 allprojects  {
-  apply plugin: 'jacoco'
-  group = 'de.meida'
+  //apply plugin: 'jacoco'
+  group = 'de.appblocks'
   version = '0.1.0'
 }
 
+/*
 task codeCoverageReport(type: JacocoReport) {
 
     // Gather execution data from all subprojects
@@ -36,10 +37,11 @@ task codeCoverageReport(type: JacocoReport) {
 codeCoverageReport.dependsOn {
     subprojects*.test
 }
+*/
 
 subprojects {
 
-  apply plugin: 'jacoco'
+  // apply plugin: 'jacoco'
   apply plugin: 'java'
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
@@ -56,6 +58,7 @@ subprojects {
 
   dependencies {
   	testCompile('org.springframework.boot:spring-boot-starter-test')
+//	compile "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
   }
   /*
   sonarqube {
