@@ -1,4 +1,4 @@
-package de.appblocks.microservice.purchaseoffer.integration;
+package de.appblocks.microservice.purchaseoffer.integration.topics;
 
 public interface PurchaseOfferTopic {
 

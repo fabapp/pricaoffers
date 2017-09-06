@@ -1,4 +1,4 @@
-package de.appblocks.microservice.purchaseoffer.integration;
+package de.appblocks.microservice.purchaseoffer.integration.topics;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -24,7 +24,6 @@ public class ContactsTopicAdaper {
 	public void listen(ConsumerRecord<String, Supplier> cr) {
 		Supplier supplier = cr.value();
 		supplierRepository.save(supplier);
-		System.out.println("ContactsTopicAdapter received Supplier: " + supplier);
 		logger.debug("updated / created supplier record: {}", supplier);
 	}
 

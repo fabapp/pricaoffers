@@ -1,4 +1,4 @@
-package de.appblocks.microservice.purchaseoffer.integration;
+package de.appblocks.microservice.purchaseoffer.integration.topics;
 
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

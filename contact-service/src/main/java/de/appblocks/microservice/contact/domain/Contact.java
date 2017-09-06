@@ -36,7 +36,7 @@ public class Contact {
 	
 	@ElementCollection(targetClass=ContactRelation.class)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name="contact_relation_typs")
+    @CollectionTable(name="contact_relation_types")
     @Column(name="relation")
 	Set<ContactRelation> relationTypes;
 	
